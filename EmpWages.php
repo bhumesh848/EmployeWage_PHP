@@ -24,18 +24,32 @@ class EmpWages{
        $partTimeEmpWagePerHour = 15;
        $partTimeHour =8;
        $totalPartTimeWage = $partTimeEmpWagePerHour * $partTimeHour;  
-       echo "part Time employee wage is :" .$totalPartTimeWage;
-
+       echo "part Time employee wage is :" .$totalPartTimeWage."\n";
    }
+   
+function attendance(){
+    $number= readline("press 1 for Daily Wage \n press 2 for partTime");
+     switch($number){
+         case 1 :
+            $this->empCheck();
+            break;
+            case 2 :
+                $this->partTime();
+                break;
+                default :
+                echo "enter a valid input";
+                break;
+     }
 }
+}
+
 $empWage = new EmpWages();
 $empWage->welcomeMsg();
 $AttendanceCheck = new EmpWages();
 $AttendanceCheck->empCheck();
 $partTimeWage = new EmpWages();
 $partTimeWage->partTime();
-
-
-
+$attend = new EmpWages();
+$attend->attendance();
 
 ?>
