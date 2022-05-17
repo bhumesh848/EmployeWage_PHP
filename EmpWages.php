@@ -17,7 +17,14 @@ class EmpWages{
            echo "Employee is Absent"."\n";
        }
        $dailyWage = $empWagePerHour * $fullDayHour;
-       echo "Daily employee wage is :". $dailyWage;
+       echo "Daily employee wage is :". $dailyWage."\n";
+
+   }
+   function partTime(){
+       $partTimeEmpWagePerHour = 15;
+       $partTimeHour =8;
+       $totalPartTimeWage = $partTimeEmpWagePerHour * $partTimeHour;  
+       echo "part Time employee wage is :" .$totalPartTimeWage;
 
    }
 }
@@ -25,6 +32,9 @@ $empWage = new EmpWages();
 $empWage->welcomeMsg();
 $AttendanceCheck = new EmpWages();
 $AttendanceCheck->empCheck();
+$partTimeWage = new EmpWages();
+$partTimeWage->partTime();
+
 
 
 
