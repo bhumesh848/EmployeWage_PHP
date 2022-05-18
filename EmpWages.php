@@ -2,65 +2,43 @@
 
 class EmpWages
 {
+    const PART_TIME_HOUR = 4;
+    const FULL_DAY_HOUR = 8;
+    const EMP_WAGE_PER_HOUR = 20;
+    const FULL_TIME = 1;
+    const PART_TIME = 2;
+    const WORKING_DAYS = 20;
     function welcomeMsg()
     {
         echo "Welcome to employee wage problem" . "\n";
     }
     function empCheck()
     {
-        $empAbsent = 0;
-        $empPresent = 1;
-        $empWagePerHour = 20;
-        $fullDayHour = 8;
-        $number = rand(0, 1);
-        if ($number == 1) {
-            echo "Employee is present" . "\n";
-        } else {
-            echo "Employee is Absent" . "\n";
-        }
-        $dailyWage = $empWagePerHour * $fullDayHour;
-        echo "Daily employee wage is :" . $dailyWage . "\n";
-    }
-    function partTime()
-    {
-        $partTimeEmpWagePerHour = 15;
-        $partTimeHour = 8;
-        $totalPartTimeWage = $partTimeEmpWagePerHour * $partTimeHour;
-        echo "part Time employee wage is :" . $totalPartTimeWage . "\n";
-    }
-
-    function attendance()
-    {
-        $number = readline("press 1 for Daily Wage \n press 2 for partTime");
-        switch ($number) {
-            case 1:
-                $this->empCheck();
-                break;
-            case 2:
-                $this->partTime();
-                break;
-            default:
-                echo "enter a valid input";
-                break;
-        }
-    }
-    function wageForMonth()
-    {
-        $workingDaysOfMonth = 20;
-        $dailyWage = 160;
-        $wageForMonth = $workingDaysOfMonth * $dailyWage;
-        echo "wage for month = " . $wageForMonth;
+        $dailyHour = 0;
+        $day = 1;
+         for($day=1;$day<= EmpWages:: WORKING_DAYS;$day++){
+             
+            $number = rand(0, 2);
+            switch ($number) {
+                case EmpWages::FULL_TIME:
+                    echo "Employee is present" . "\n";
+                    $dailyHour += EmpWages::FULL_DAY_HOUR;
+                    break;
+                case EmpWages::PART_TIME:
+                    echo "Employee is part time";
+                    $dailyHour += EmpWages::PART_TIME_HOUR;
+                    break;
+                default:
+                    echo "Employee is Absent" . "\n";
+            }
+         }
+        
+        $monthlyWage = EmpWages::EMP_WAGE_PER_HOUR * $dailyHour;
+        echo "Daily employee wage is :" . $monthlyWage . "\n";
+        
     }
 }
-
 $empWage = new EmpWages();
 $empWage->welcomeMsg();
-$AttendanceCheck = new EmpWages();
-$AttendanceCheck->empCheck();
-$partTimeWage = new EmpWages();
-$partTimeWage->partTime();
-$attend = new EmpWages();
-$attend->attendance();
-$empWageForMonth = new EmpWages();
-$empWageForMonth->wageForMonth();
-?>
+$empWage->empCheck();
+    
