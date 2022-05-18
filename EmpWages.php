@@ -49,8 +49,13 @@ class EmpWages
         $workingDaysOfMonth = 20;
         $dailyWage = 160;
         $wageForMonth = $workingDaysOfMonth * $dailyWage;
-        echo "wage for month = " . $wageForMonth;
-    }
+        echo "wage for month = " . $wageForMonth."\n";
+        
+        $Hours = 100;
+        $totalWorkingHours = $Hours * $dailyWage;
+        echo "total working hours is : ".$totalWorkingHours;
+    
+}
 }
 
 $empWage = new EmpWages();
@@ -63,4 +68,3 @@ $attend = new EmpWages();
 $attend->attendance();
 $empWageForMonth = new EmpWages();
 $empWageForMonth->wageForMonth();
-?>
