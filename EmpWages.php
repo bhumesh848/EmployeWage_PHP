@@ -1,41 +1,36 @@
 <?php
 
 class EmpWages{
+    const PART_TIME_HOUR = 4;
+    const FULL_DAY_HOUR = 8;
+    const EMP_WAGE_PER_HOUR = 20;
+    const FULL_TIME = 1;
+    const PART_TIME = 2;
    function welcomeMsg(){
        echo "Welcome to employee wage problem"."\n";
    }
    function empCheck(){
-       $empAbsent = 0;
-       $empPresent = 1;
-       $empWagePerHour = 20;
-       $fullDayHour = 8;
-       $number =rand(0,1);
-       if($number==1){
+      $dailyHour = 0;
+      
+       $number =rand(0,2);
+       if($number== EmpWages:: FULL_TIME){
            echo "Employee is present"."\n";
+          $dailyHour = EmpWages::FULL_DAY_HOUR;
+       }
+       elseif($number==EmpWages::PART_TIME){
+           echo "Employee is part time";
+           $dailyHour = EmpWages::PART_TIME_HOUR;
        }
        else{
            echo "Employee is Absent"."\n";
        }
-       $dailyWage = $empWagePerHour * $fullDayHour;
+       $dailyWage = EmpWages::EMP_WAGE_PER_HOUR * $dailyHour;
        echo "Daily employee wage is :". $dailyWage."\n";
-
-   }
-   function partTime(){
-       $partTimeEmpWagePerHour = 15;
-       $partTimeHour =8;
-       $totalPartTimeWage = $partTimeEmpWagePerHour * $partTimeHour;  
-       echo "part Time employee wage is :" .$totalPartTimeWage;
-
-   }
+   
+}
 }
 $empWage = new EmpWages();
 $empWage->welcomeMsg();
-$AttendanceCheck = new EmpWages();
-$AttendanceCheck->empCheck();
-$partTimeWage = new EmpWages();
-$partTimeWage->partTime();
-
-
-
+$empWage->empCheck();
 
 ?>
