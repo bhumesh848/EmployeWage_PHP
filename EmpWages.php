@@ -5,18 +5,19 @@ class EmpWages{
        echo "Welcome to employee wage problem"."\n";
    }
    function empCheck(){
-       $empAbsent = 0;
-       $empPresent = 1;
+      
        $empWagePerHour = 20;
        $fullDayHour = 8;
        $number =rand(0,1);
+       $dailyWage =0;
        if($number==1){
            echo "Employee is present"."\n";
+           $dailyWage = $empWagePerHour * $fullDayHour;
        }
        else{
            echo "Employee is Absent"."\n";
        }
-       $dailyWage = $empWagePerHour * $fullDayHour;
+       
        echo "Daily employee wage is :". $dailyWage;
 
    }
