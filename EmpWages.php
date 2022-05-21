@@ -8,18 +8,39 @@ class EmpWages
     public $PART_TIME = 2;
     public $MAX_HOURS = 100;
 
-    private $WORKING_DAYS_PER_MONTH;
-    private $WORKING_HOURS_PER_MONTH;
-    private $WAGE_PER_HR;
+    private $workingDaysPerMonth;
+    private $workingHoursPerMonth;
+    private $wagePerHr;
 
-    function company()
+   
+    function __construct($workingDaysPerMonth, $workingHoursPerMonth, $wagePerHr)
+    {
+        $this->workingDaysPerMonth = $workingDaysPerMonth;
+        $this->workingHoursPerMonth = $workingHoursPerMonth;
+        $this->wagePerHr = $wagePerHr;
+    }
+    function get_workingDaysPerMonth()
+    {
+        return $this->workingDaysPerMonth;
+    }
+    function get_workingHoursPerMonth()
+    {
+        return $this->workingHoursPerMonth;
+    }
+    function get_wagePerHr()
+    {
+        return $this->wagePerHr;
+    }
+
+    public function company()
     {
         $name = readline('Enter Name of Company: ');
         echo "Employee Wage Computation For" . $name . "\n";
-        $this->WORKING_DAYS_PER_MONTH = readline('Enter Max Working Days Per Month: ');
-        $this->WORKING_HOURS_PER_MONTH = readline('Enter Max Working Hours Per Month: ');
-        $this->WAGE_PER_HR = readline('Enter Employee Wage Per Hour: ');
-        $this->empCheck($this->WORKING_DAYS_PER_MONTH,$this->WORKING_HOURS_PER_MONTH, $this->WAGE_PER_HR);
+        $WORKING_DAYS_PER_MONTH = readline('Enter Max Working Days Per Month: ');
+        $WORKING_HOURS_PER_MONTH = readline('Enter Max Working Hours Per Month: ');
+        $WAGE_PER_HR = readline('Enter Employee Wage Per Hour: ');
+        return new EmpWages($WORKING_DAYS_PER_MONTH, $WORKING_HOURS_PER_MONTH, $WAGE_PER_HR);   
+        //$this->empCheck($this->workingDaysPerMonth, $this->workingHoursPerMonth, $this->wagePerHr);
     }
     function welcomeMsg()
     {
@@ -51,15 +72,28 @@ class EmpWages
         echo "number of  total working days =" . $day . "\n";
         echo "number of working hours = $dailyHour";
     }
-   
+
 }
-
-
 
 // $empWage = new EmpWages();
 // $empWage->welcomeMsg();
 // $empWage->empCheck();
-$company1 = new EmpWages();
-$company1->company();
-$company2 = new EmpWages();
-$company2->company();
+
+$name = readline('Enter Name of Company: ');
+echo "Employee Wage Computation For" . $name . "\n";
+$WORKING_DAYS_PER_MONTH = readline('Enter Max Working Days Per Month: ');
+$WORKING_HOURS_PER_MONTH = readline('Enter Max Working Hours Per Month: ');
+$WAGE_PER_HR = readline('Enter Employee Wage Per Hour: ');  
+$company1 = new EmpWages($WORKING_DAYS_PER_MONTH, $WORKING_HOURS_PER_MONTH, $WAGE_PER_HR);
+$company1->empCheck($company1->get_workingDaysPerMonth(),$company1->get_workingHoursPerMonth(),$company1->get_wagePerHr());
+
+
+$name = readline('Enter Name of Company: ');
+echo "Employee Wage Computation For" . $name . "\n";
+$WORKING_DAYS_PER_MONTH = readline('Enter Max Working Days Per Month: ');
+$WORKING_HOURS_PER_MONTH = readline('Enter Max Working Hours Per Month: ');
+$WAGE_PER_HR = readline('Enter Employee Wage Per Hour: ');  
+//$company1 = new EmpWages($WORKING_DAYS_PER_MONTH, $WORKING_HOURS_PER_MONTH, $WAGE_PER_HR);
+$company2 = new EmpWages($WORKING_DAYS_PER_MONTH, $WORKING_HOURS_PER_MONTH, $WAGE_PER_HR);
+$company2->empCheck($company2->get_workingDaysPerMonth(),$company2->get_workingHoursPerMonth(),$company2->get_wagePerHr());
+?>
